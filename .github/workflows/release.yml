@@ -3,7 +3,8 @@ name: Release PDF
 on:
   push:
     tags:
-      - "v*.*.*"
+      - "v*"
+  workflow_dispatch:
 
 jobs:
   build:
