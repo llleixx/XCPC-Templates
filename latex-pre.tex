@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage[fontset=none]{ctex}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{lmodern}
+\usepackage{listings,xcolor}
+\usepackage{geometry}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage[colorlinks, linkcolor=blue, anchorcolor=blue, citecolor=green]{hyperref} % 超链接颜色设置
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox} % 提供美观的框
+
+% 页面布局设置
+\geometry{a4paper, scale=0.8} % 页面大小和边距
+
+% 字体设置
+\setCJKmainfont{Source Han Sans SC}[
+  ItalicFont={Source Han Sans SC},
+  ItalicFeatures={FakeSlant=0.2}
+]
+\setCJKsansfont{Source Han Sans SC}[
+  ItalicFont={Source Han Sans SC},
+  ItalicFeatures={FakeSlant=0.2}
+]
+\setCJKmonofont{Source Han Sans SC}[
+  ItalicFont={Source Han Sans SC},
+  ItalicFeatures={FakeSlant=0.2}
+]
+
+\setmainfont{Source Han Sans SC}[
+  ItalicFont={Source Han Sans SC},
+  ItalicFeatures={FakeSlant=0.2}
+]
+\setsansfont{Source Han Sans SC}[
+  ItalicFont={Source Han Sans SC},
+  ItalicFeatures={FakeSlant=0.2}
+]
+\setmonofont{Source Han Sans SC}[
+  ItalicFont={Source Han Sans SC},
+  ItalicFeatures={FakeSlant=0.2}
+] % 代码字体
+
+% 取消首行缩进和设置行间距
+\setlength{\parindent}{0pt} 
+\setlength{\parskip}{0.5em} % 设置段间距
+\linespread{1.3} % 行间距
+
+% 页眉页脚设置
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark} % 页眉左侧显示章节名
+\fancyfoot[C]{\thepage} % 页脚中间显示页码
+
+% 代码样式设置
+\lstset{
+  language=C++, % 语言设置为 C++
+  basicstyle=\ttfamily\small, % 使用等宽字体，字号小一号
+  keywordstyle=\color{blue}\bfseries, % 关键字颜色
+  commentstyle=\color{gray}\itshape, % 注释颜色，斜体
+  stringstyle=\color{red}, % 字符串颜色
+  numbers=left, % 行号显示在左侧
+  numberstyle=\small\color{gray}, % 行号样式
+  stepnumber=1, % 行号递增
+  numbersep=10pt, % 行号和代码的间隔
+  backgroundcolor=\color{gray!5},
+  showspaces=false, % 不显示空格
+  showstringspaces=false, % 字符串中不显示空格
+  breaklines=true, % 自动换行
+  frame=single, % 给代码添加边框
+  rulecolor=\color{black!30}, % 边框颜色
+  tabsize=4, % 设置 Tab 宽度
+  captionpos=b % 标题位置
+}
+
+
+% 标题样式设置
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% 封面设置
+\title{{PLACEHOLDER:TITLE}}
+\author{{PLACEHOLDER:AUTHOR}}
+\date{\today}
+
+\begin{document}
+
+% 封面内容
+\maketitle
+{
+  \hypersetup{linkcolor=black}
+  \tableofcontents
+}
+
+
+\newpage
