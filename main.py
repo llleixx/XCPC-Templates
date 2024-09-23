@@ -4,9 +4,11 @@ import yaml
 
 
 def get_config(directory):
-    config_file = posixpath.join(directory, "config.yaml")
+    config_file = posixpath.join(directory, "config.yml")
     if not posixpath.exists(config_file):
-        raise FileNotFoundError(f"config.yaml not found in {directory}")
+        config_file = posixpath.join(directory, "config.yaml")
+        if not posixpath.exists(config_file):
+            raise FileNotFoundError(f"config.yml not found in {directory}")
 
     with open(config_file, "r", encoding="UTF-8") as f:
         config = yaml.safe_load(f)
@@ -127,6 +129,6 @@ if __name__ == "__main__":
     latex_content = generate_latex(root_dir)
     config = get_config(root_dir)
 
-    output_file = config.get("output", "output.tex")
+    output_file = "output.tex"
     write_latex_file(latex_content, output_file)
     print(f"LaTeX 文件已生成：{output_file}")

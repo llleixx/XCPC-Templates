@@ -1,0 +1,30 @@
+name: Release PDF
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          cache: 'pip'
+      - run: |
+          pip install -r requirements.txt
+          python main.py
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: output.tex
+          latexmk_use_xelatex: true
+          extra_fonts: |
+            ./fonts/*.otf
+            ./fonts/*.ttf
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: output.pdf
