@@ -1,5 +1,7 @@
-contents:
+﻿contents:
   - name: 图论
     directory: 图论
+  - name: 数学
+    directory: 数学
   - name: 数据结构
     directory: 数据结构

@@ -1,0 +1,5 @@
+﻿contents:
+  - name: 排列组合
+    code-pre: 排列组合-pre.tex
+  - name: 斐波那契数列
+    code-pre: 斐波那契数列-pre.tex
