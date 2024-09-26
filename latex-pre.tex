@@ -9,7 +9,6 @@
 \usepackage[colorlinks, linkcolor=blue, anchorcolor=blue, citecolor=green]{hyperref} % 超链接颜色设置
 \usepackage{setspace}
 \usepackage{fancyhdr}
-\usepackage{tcolorbox} % 提供美观的框
 
 % 页面布局设置
 \geometry{a4paper, scale=0.8} % 页面大小和边距
@@ -43,11 +42,9 @@
 
 % 取消首行缩进和设置行间距
 \setlength{\parindent}{0pt} 
-\setlength{\parskip}{0.5em} % 设置段间距
-\linespread{1.3} % 行间距
 
 % 页眉页脚设置
-\setlength{\headheight}{15pt}
+\setlength{\headheight}{13pt}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\leftmark} % 页眉左侧显示章节名
@@ -56,7 +53,7 @@
 % 代码样式设置
 \lstset{
   language=C++, % 语言设置为 C++
-  basicstyle=\ttfamily\small, % 使用等宽字体，字号小一号
+  basicstyle=\sffamily\small\linespread{1.1}\selectfont,
   keywordstyle=\color{blue}\bfseries, % 关键字颜色
   commentstyle=\color{gray}\itshape, % 注释颜色，斜体
   stringstyle=\color{red}, % 字符串颜色

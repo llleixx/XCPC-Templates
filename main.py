@@ -1,6 +1,28 @@
 import posixpath
+import re
 
 import yaml
+
+
+def escape_latex_special_chars(text):
+    """
+    转义 LaTeX 特殊字符，包括: _ % $ # & { } ~ ^
+    """
+    special_chars = {
+        '\\': r'\textbackslash{}',
+        '&': r'\&',
+        '%': r'\%',
+        '$': r'\$',
+        '#': r'\#',
+        '_': r'\_',
+        '{': r'\{',
+        '}': r'\}',
+        '~': r'\textasciitilde{}',
+        '^': r'\textasciicircum{}'
+    }
+    # 使用正则表达式替换所有特殊字符
+    return re.sub('|'.join(re.escape(key) for key in special_chars.keys()), 
+                  lambda match: special_chars[match.group()], text)
 
 
 def read_file(file_path):
@@ -38,12 +60,14 @@ def generate_latex_for_item(directory, item, depth):
     if "name" not in item:
         raise ValueError(f"目录 {directory} 配置文件有误（未配置 name）")
 
+    name = escape_latex_special_chars(item.get('name'))
+
     if depth == 0:
-        latex_parts.append(f"\\section{{{item['name']}}}\n")
+        latex_parts.append(f"\\section{{{name}}}\n")
     elif depth == 1:
-        latex_parts.append(f"\\subsection{{{item['name']}}}\n")
+        latex_parts.append(f"\\subsection{{{name}}}\n")
     elif depth == 2:
-        latex_parts.append(f"\\subsubsection{{{item['name']}}}\n")
+        latex_parts.append(f"\\subsubsection{{{name}}}\n")
     else:
         raise ValueError(f"目录 {directory} 配置过深")
 
@@ -57,7 +81,7 @@ def generate_latex_for_item(directory, item, depth):
             if not posixpath.isfile(file_path):
                 raise FileNotFoundError(f"{code_type} 文件不存在：{file_path}")
 
-            caption = item.get("caption", "")
+            caption = escape_latex_special_chars(item.get("caption", ""))
             latex_parts.append(
                 f"\\lstinputlisting[caption={{{caption}}}]{{{file_path}}}\n"
             )
@@ -73,7 +97,7 @@ def generate_latex_from_config(directory, depth=0):
     config = get_config(directory)
 
     latex_sections = []
-    for item in config.get("contents", []):
+    for item in config.get("contents") or []:
         if "directory" in item:
             subdir_path = posixpath.join(directory, item["directory"])
 
@@ -98,8 +122,8 @@ def generate_latex(root_dir):
         latex_pre_path = config["latex-pre"]
         latex_pre = read_file(latex_pre_path)
 
-    title = config.get("title", "UESTC Nanana Templates")
-    author = config.get("author", "UESTC_Nanana")
+    title = escape_latex_special_chars(config.get("title", "UESTC Nanana Templates"))
+    author = escape_latex_special_chars(config.get("author", "UESTC_Nanana"))
 
     latex_pre = latex_pre.replace("{PLACEHOLDER:TITLE}", title).replace(
         "{PLACEHOLDER:AUTHOR}", author
@@ -137,3 +161,4 @@ if __name__ == "__main__":
         print(f"LaTeX 文件已生成：{output_file}")
     except Exception as e:
         print(f"错误：{e}")
+

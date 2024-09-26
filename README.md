@@ -2,11 +2,11 @@
 
 这是一个借助于 GitHub Action 实现自动生成算法模板的项目！
 
-你并不需要安装 Python 环境，你也并不需要安装臃肿的 LaTeX 环境。
+- 你**不需要安装 Python 环境**；
+- 你也并**不需要安装臃肿的 LaTeX 环境（你甚至不需要会 LaTeX 语法）**；
+- 你**只需要提供你的模板文件并且加以简单配置**，就能借助 GitHub Action 生成你的模板 PDF 到 Releases 一栏！
 
-你只需要提供模板文件，并且加以简单的配置，借助于 CICD 的力量，你能够将模板自动发布到 Release 一栏！
-
-具体示例可以参考本项目的 Release 结果。
+具体生成结果可以参考本项目的 Releases 结果。
 
 ## 如何使用该项目？
 
@@ -15,11 +15,15 @@
 1. Fork 该项目；
 2. 把 Fork 后的项目 Clone 到本地；
 3. 在 `templates` 目录下构建你自己的算法模板结构；
-4. 对每个目录配置文件 `config.yml`；
-5. 修改项目根目录的 `config.yml`；
-6. 提交修改，并 `push` 到 GitHub。
+4. 修改项目根目录的 `config.yml`；
+5. 运行项目根目录下的 `gen.sh` 或 `gen.ps1` 来生成模板目录的配置文件：
 
-**Fork 后可能默认自动禁用 Action 功能，你需要在项目设置下开启 Action 功能**。
+    例如：`./gen.sh -r ./templates` 或者 `.\gen.ps1 -r .\templates`，其中 `-r` 代表递归生成，`./templates` 指定需要生成配置文件的目录
+
+6. 根据你期望的章节顺序或者章节名称对各个目录下的 `config.yml` 进行微调；
+7. 提交修改，并 `push` 到 GitHub。
+
+**Fork 后可能默认自动禁用 Action 功能，你需要在项目的 Actions 页面下开启 Action 功能**。
 
 当一切准备完毕，你就可以通过以下步骤来构建你的模板文件：
 
@@ -32,7 +36,7 @@ git push origin tag v1.0
 
 此时就会触发 GitHub Action 构建你的模板文件！
 
-在 Action 页面会出现日志信息，当正确运行完毕，你就可以在项目的 Release 页面发现你构建的 PDF 文件。
+在 Actions 页面会出现日志信息，当正确运行完毕，你就可以在项目的 Releases 页面发现你构建的 PDF 文件。
 
 ## 配置文件？
 
@@ -57,7 +61,7 @@ root-directory: templates
 latex-pre: latex-pre.tex
 latex-post: latex-post.tex
 title: UESTC Nanana Templates
-author: UESTC\_Nanana
+author: UESTC_Nanana
 ```
 
 ### 模板目录的 `config.yml`
@@ -98,21 +102,27 @@ contents:
   - name: 树状数组
     caption: optional
     code: fenwick-tree.cpp
+  # 如果未配置 code，就代表只会生成对应的文本
+  - name: 排列组合
+    code-pre: 排列组合-pre.tex
 ```
+
+## gen.sh 和 gen.ps1 的生成逻辑？
+
+`-r` 选项可以启用递归模式。
+
+对于指定的目录而言：
+
+对于子目录，生成对应子章节，如果启用递归模式，就会递归下去。
+
+对于 `x.cpp`，`x-pre.tex` 和 `x-post.tex` 文件，会自动组装成一项到配置文件中，这三者可以自由搭配组合。
 
 ## 注意事项
 
-1. 由于该项目是通过直接将文字插入进相应的 LaTeX 宏命令当中，并没有对需要转义的字符进行特殊处理。**你需要手动转义常见的特殊字符**。
-
-    涉及到的配置项有：
-
-    - 项目根目录下的 `title` 以及 `author`。
-    - 模板目录下的 `name` 以及 `caption`。
-
-2. Fork 后可能默认自动禁用 Action 功能，你需要在项目设置下开启 Action 功能；
-3. 请使用 `UTF-8` 编码；
-4. 使用 `/` 作为路径分隔符，不要使用 `\`；
-5. 模板目录深度不要过深！可以将本项目示例中的 `maxFlow.cpp` 作为可以接受的最深深度；
+1. Fork 后可能默认自动禁用 Action 功能，你需要在项目的 Actions 页面下开启 Action 功能；
+2. 请使用 `UTF-8` 编码；
+3. 使用 `/` 作为路径分隔符，不要使用 `\`；
+4. 模板目录深度不要过深！可以将本项目示例中的 `maxFlow.cpp` 作为可以接受的最深深度；
 
 ## 更多的自定义
 

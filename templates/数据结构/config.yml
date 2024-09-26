@@ -1,6 +1,5 @@
 contents:
-  - name: 树状数组
-    caption: optional
-    code: fenwick-tree.cpp
-  - name: 并查集
+  - name: disjoint_set_union
     code: disjoint_set_union.cpp
+  - name: fenwick-tree
+    code: fenwick-tree.cpp

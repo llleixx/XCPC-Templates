@@ -28,10 +28,11 @@ jobs:
         with:
           root_file: output.tex
           latexmk_use_xelatex: true
+          args: -jobname=output_${{ github.ref_name }}
           extra_fonts: |
             ./fonts/*.otf
             ./fonts/*.ttf
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: output.pdf
+          files: output_${{ github.ref_name }}.pdf

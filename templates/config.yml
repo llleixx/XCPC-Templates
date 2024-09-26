@@ -1,5 +1,5 @@
 contents:
-  - name: 数据结构
-    directory: 数据结构
   - name: 图论
     directory: 图论
+  - name: 数据结构
+    directory: 数据结构
