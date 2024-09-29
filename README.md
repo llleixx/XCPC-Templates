@@ -123,6 +123,9 @@ contents:
 2. 请使用 `UTF-8` 编码；
 3. 使用 `/` 作为路径分隔符，不要使用 `\`；
 4. 模板目录深度不要过深！可以将本项目示例中的 `maxFlow.cpp` 作为可以接受的最深深度；
+5. 如果你有使用 `code-pre` 和 `code-post` 的需求，**请确保你会使用 LaTeX 的基本语法，否则可能不会出现你预期效果**：比如注意对 LaTeX 中的特殊字符（`# $ % & { } _ ^ ~ \` ）进行转义，使用 `\begin{enumerate} ... \end{enumerate}` 表示有序列表，使用 `\begin{itemize} ... \end{itemize}` 表示无序列表等。
+
+    当然，如果你不会 LaTeX 也没关系，**你可以将你的 Markdown 文本丢给 AI**，让 AI 帮你转换成对应的 LaTeX 文本。
 
 ## 更多的自定义
 
