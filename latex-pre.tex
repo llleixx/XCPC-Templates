@@ -9,36 +9,28 @@
 \usepackage[colorlinks, linkcolor=blue, anchorcolor=blue, citecolor=green]{hyperref} % 超链接颜色设置
 \usepackage{setspace}
 \usepackage{fancyhdr}
+\usepackage{titletoc}
 
 % 页面布局设置
 \geometry{a4paper, scale=0.8} % 页面大小和边距
 
 % 字体设置
-\setCJKmainfont{Source Han Sans SC}[
-  ItalicFont={Source Han Sans SC},
+\setCJKmainfont{Source Han Sans HW SC}[
+  ItalicFont={Source Han Sans HW SC},
   ItalicFeatures={FakeSlant=0.2}
 ]
-\setCJKsansfont{Source Han Sans SC}[
-  ItalicFont={Source Han Sans SC},
+\setCJKsansfont{Source Han Sans HW SC}[
+  ItalicFont={Source Han Sans HW SC},
   ItalicFeatures={FakeSlant=0.2}
 ]
-\setCJKmonofont{Source Han Sans SC}[
-  ItalicFont={Source Han Sans SC},
+\setCJKmonofont{Source Han Sans HW SC}[
+  ItalicFont={Source Han Sans HW SC},
   ItalicFeatures={FakeSlant=0.2}
 ]
 
-\setmainfont{Source Han Sans SC}[
-  ItalicFont={Source Han Sans SC},
-  ItalicFeatures={FakeSlant=0.2}
-]
-\setsansfont{Source Han Sans SC}[
-  ItalicFont={Source Han Sans SC},
-  ItalicFeatures={FakeSlant=0.2}
-]
-\setmonofont{Source Han Sans SC}[
-  ItalicFont={Source Han Sans SC},
-  ItalicFeatures={FakeSlant=0.2}
-] % 代码字体
+\setmainfont{Inconsolata LGC Nerd Font Mono}
+\setsansfont{Inconsolata LGC Nerd Font Mono}
+\setmonofont{Inconsolata LGC Nerd Font Mono}
 
 % 取消首行缩进和设置行间距
 \setlength{\parindent}{0pt} 
@@ -53,7 +45,7 @@
 % 代码样式设置
 \lstset{
   language=C++, % 语言设置为 C++
-  basicstyle=\sffamily\small\linespread{1.1}\selectfont,
+  basicstyle=\ttfamily\small\linespread{1.1}\selectfont,
   keywordstyle=\color{blue}\bfseries, % 关键字颜色
   commentstyle=\color{gray}\itshape, % 注释颜色，斜体
   stringstyle=\color{red}, % 字符串颜色
@@ -78,9 +70,14 @@
 \titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
 
+% 目录样式设置
+\usepackage{tocloft}
+\cftsetindents{subsection}{1.5em}{3em}
+\cftsetindents{subsubsection}{3em}{4em}
+
 % 封面设置
-\title{{PLACEHOLDER:TITLE}}
-\author{{PLACEHOLDER:AUTHOR}}
+\title{UESTC Nanana Templates}
+\author{UESTC\_Nanana}
 \date{\today}
 
 \begin{document}
@@ -91,6 +88,5 @@
   \hypersetup{linkcolor=black}
   \tableofcontents
 }
-
 
 \newpage
