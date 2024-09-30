@@ -15,7 +15,7 @@ process_directory() {
   local output_file="$current_dir/config.yml"
   
   # Clear or create the config.yml file
-  echo "contents:" > "$output_file"
+  echo "contents:" | iconv -t UTF-8 > "$output_file"
 
   # Create an associative array to track processed files
   declare -A processed_files
@@ -25,8 +25,8 @@ process_directory() {
     if [ -d "$entry" ]; then
       # Process subdirectories
       dir_name=$(basename "$entry")
-      echo "  - name: $dir_name" >> "$output_file"
-      echo "    directory: $dir_name" >> "$output_file"
+      echo "  - name: $dir_name" | iconv -t UTF-8 >> "$output_file"
+      echo "    directory: $dir_name" | iconv -t UTF-8 >> "$output_file"
       
       # If recursive is enabled, recursively call the function for subdirectories
       if [ "$RECURSIVE" = true ]; then
@@ -59,19 +59,19 @@ process_directory() {
         processed_files[$base_name]=1
 
         # Prepare to start generating entries
-        echo "  - name: $base_name" >> "$output_file"
+        echo "  - name: $base_name" | iconv -t UTF-8 >> "$output_file"
 
         # Process .cpp files if they exist
         if [ -f "$current_dir/$base_name.cpp" ]; then
-          echo "    code: $base_name.cpp" >> "$output_file"
+          echo "    code: $base_name.cpp" | iconv -t UTF-8 >> "$output_file"
         fi
 
         # Process pre-code and post-code files
         if [ -f "$current_dir/$base_name-pre.tex" ]; then
-          echo "    code-pre: $base_name-pre.tex" >> "$output_file"
+          echo "    code-pre: $base_name-pre.tex" | iconv -t UTF-8 >> "$output_file"
         fi
         if [ -f "$current_dir/$base_name-post.tex" ]; then
-          echo "    code-post: $base_name-post.tex" >> "$output_file"
+          echo "    code-post: $base_name-post.tex" | iconv -t UTF-8 >> "$output_file"
         fi
       fi
     fi
