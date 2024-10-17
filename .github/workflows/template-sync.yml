@@ -1,0 +1,29 @@
+name: Template sync
+
+on:
+  schedule:
+  - cron: "0 15 15 * *"
+  workflow_dispatch:
+
+env:
+  SOURCE_BRANCH: main
+  SOURCE_REPOSITORY: llleixx/XCPC-Templates
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        if: github.repository != env.SOURCE_REPOSITORY
+
+      - name: actions-template-sync
+        uses: AndreasAugustin/actions-template-sync@v2
+        if: github.repository != env.SOURCE_REPOSITORY
+        with:
+          source_repo_path: ${{ env.SOURCE_REPOSITORY }}
+          upstream_branch: ${{ env.SOURCE_BRANCH }}
