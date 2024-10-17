@@ -154,11 +154,8 @@ def write_latex_file(latex_content, output_file):
 if __name__ == "__main__":
     root_dir = "./"
 
-    try:
-        latex_content = generate_latex(root_dir)
-        output_file = "output.tex"
-        write_latex_file(latex_content, output_file)
-        print(f"LaTeX 文件已生成：{output_file}")
-    except Exception as e:
-        print(f"错误：{e}")
+    latex_content = generate_latex(root_dir)
+    output_file = "output.tex"
+    write_latex_file(latex_content, output_file)
+    print(f"LaTeX 文件已生成：{output_file}")
 
