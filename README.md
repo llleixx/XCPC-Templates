@@ -131,7 +131,11 @@ contents:
 
     同时如果你有在 `code-pre` 和 `code-post` 中使用小标题的需求，请使用 `\subsubsection*{title}`，具体你可以参考本项目中的 `排列组合-pre.tex`。
 
-    当然，如果你不会 LaTeX 也没关系，**你可以将你的 Markdown 文本丢给 AI**，让 AI 帮你转换成对应的 LaTeX 文本。
+6. 我不会 LaTeX，但我也想丢一些文本内容到模板里面，我该怎么做？
+
+    - Plan A: 学习 LaTeX
+    - Plan B: 曲线救国，将文本以注释的方式丢到 CPP 文件中
+    - Plan C: 将你的**Markdown 文本 丢给 AI**，让其转换成 LaTeX 文本
   
 ## 更多的自定义
 
