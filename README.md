@@ -12,20 +12,24 @@
 
 你只需要的是：
 
-1. Fork 该项目；
-2. 把 Fork 后的项目 Clone 到本地；
+1. 点击本项目右上角 `Use this template` 中的 `create a new repository` 来创建你自己的项目；
+2. 将你的的项目 Clone 到本地；
 3. 在 `templates` 目录下构建你自己的算法模板结构；
 4. 修改项目根目录的 `config.yml`；
 5. 运行项目根目录下的 `gen.sh` 或 `gen.ps1` 来生成模板目录的配置文件：
 
     例如：`./gen.sh -r ./templates` 或者 `.\gen.ps1 -r .\templates`，其中 `-r` 代表递归生成，`./templates` 指定需要生成配置文件的目录
 
+    注意 `gen.sh` 适用于 Linux, macOS 以及其他基于 Unix 的操作系统（需要 Bash 版本 4.x 及以上），同时也适用于 Windows 平台下的 Git Bash；而 `gen.ps1` 适用于 Windows 平台（需要 Powershell，但可能因为安全策略，你需要允许外部脚本运行）
+
 6. 根据你期望的章节顺序或者章节名称对各个目录下的 `config.yml` 进行微调；
 7. 提交修改，并 `push` 到 GitHub。
 
-**Fork 后可能默认自动禁用 Action 功能，你需要在项目的 Actions 页面下开启 Action 功能**。
+**更推荐你使用 GitHub template repository 来创建你的项目**。
 
-当一切准备完毕，你就可以通过以下步骤来构建你的模板文件：
+**但如果你是通过 Fork 来创建项目，GitHub 会默认自动禁用 Action 功能，你需要在项目的 Actions 页面下开启 Action 功能**。
+
+当以上准备完毕，你就可以通过以下步骤来自动构建你的模板文件：
 
 ```sh
 # 给当前分支打 tag，tag 需要以 v 开头
@@ -119,14 +123,16 @@ contents:
 
 ## 注意事项
 
-1. Fork 后可能默认自动禁用 Action 功能，你需要在项目的 Actions 页面下开启 Action 功能；
+1. 如果你使用 Fork 创建你自己的项目，Fork 后可能默认自动禁用 Action 功能，你需要在项目的 Actions 页面下开启 Action 功能；
 2. 请使用 `UTF-8` 编码；
 3. 使用 `/` 作为路径分隔符，不要使用 `\`；
-4. 模板目录深度不要过深！可以将本项目示例中的 `maxFlow.cpp` 作为可以接受的最深深度；
+4. 本项目使用 `\section`、`\subsection` 和 `\subsubsection` 作为章节标号，所以嵌套目录不能过多。请以本项目中的 `maxFlow.cpp` 作为最大目录嵌套深度；
 5. 如果你有使用 `code-pre` 和 `code-post` 的需求，**请确保你会使用 LaTeX 的基本语法，否则可能不会出现你预期效果**：比如注意对 LaTeX 中的特殊字符（`# $ % & { } _ ^ ~ \` ）进行转义，使用 `\begin{enumerate} ... \end{enumerate}` 表示有序列表，使用 `\begin{itemize} ... \end{itemize}` 表示无序列表等。
 
-    当然，如果你不会 LaTeX 也没关系，**你可以将你的 Markdown 文本丢给 AI**，让 AI 帮你转换成对应的 LaTeX 文本。
+    同时如果你有在 `code-pre` 和 `code-post` 中使用小标题的需求，请使用 `\subsubsection*{title}`，具体你可以参考本项目中的 `排列组合-pre.tex`。
 
+    当然，如果你不会 LaTeX 也没关系，**你可以将你的 Markdown 文本丢给 AI**，让 AI 帮你转换成对应的 LaTeX 文本。
+  
 ## 更多的自定义
 
 ### 我想要修改格式
