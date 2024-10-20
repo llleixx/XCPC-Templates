@@ -1,8 +1,8 @@
 name: Template sync
 
 on:
-  schedule:
-  - cron: "0 15 15 * *"
+  # schedule:
+  # - cron: "0 15 15 * *"
   workflow_dispatch:
 
 env:

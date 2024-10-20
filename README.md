@@ -20,7 +20,9 @@
 
     例如：`./gen.sh -r ./templates` 或者 `.\gen.ps1 -r .\templates`，其中 `-r` 代表递归生成，`./templates` 指定需要生成配置文件的目录
 
-    注意 `gen.sh` 适用于 Linux, macOS 以及其他基于 Unix 的操作系统（需要 Bash 版本 4.x 及以上），同时也适用于 Windows 平台下的 Git Bash；而 `gen.ps1` 适用于 Windows 平台（需要 Powershell，但可能因为安全策略，你需要允许外部脚本运行）
+    注意 `gen.sh` 适用于 **Linux, macOS 以及其他基于 Unix 的操作系统**（需要 Bash 版本 4.x 及以上），同时也适用于 Windows 平台下的 **Git Bash**
+
+    而 `gen.ps1` 适用于 **Windows 平台**（需要 Powershell，但可能因为安全策略，你需要允许外部脚本运行）
 
 6. 根据你期望的章节顺序或者章节名称对各个目录下的 `config.yml` 进行微调；
 7. 提交修改，并 `push` 到 GitHub。
@@ -136,6 +138,11 @@ contents:
     - Plan A: 学习 LaTeX
     - Plan B: 曲线救国，将文本以注释的方式丢到 CPP 文件中
     - Plan C: 将你的**Markdown 文本 丢给 AI**，让其转换成 LaTeX 文本
+
+7. 我使用了 `GitHub template repository` 来创建项目，但我也想同步源项目（尽管我认为，后续本项目并不会有太大更改），怎么办？
+
+    1. 在 `./.github/workflows/template-sync.yml` 下取消注释
+    2. 在 GitHub 项目 Setting -> Actions -> General 页面中最下面勾选 `Allow GitHub Actions to create and approve pull requests` 并 Save
   
 ## 更多的自定义
 
